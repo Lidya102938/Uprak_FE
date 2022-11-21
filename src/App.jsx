@@ -11,8 +11,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
-          <Route path="DaftarSiswa" element={<DaftarSiswa/>}/>
-          <Route path='UpdateSiswa' element={<UpdateSiswa/>}/>
+          <Route path="DaftarSiswa" element={<DaftarSiswa />} />
+          <Route path='UpdateSiswa/:id' element={<UpdateSiswa />} />
         </Route>
       </Routes>
     </BrowserRouter>

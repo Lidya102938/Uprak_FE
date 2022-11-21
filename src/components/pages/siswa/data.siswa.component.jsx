@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 import { MdDelete, MdUpdate } from "react-icons/md"
 
 export default function dataSiswa() {
   const [datas, setDatas] = useState([])
+  const navigate = useNavigate()
   const BASE_URL = 'https://pwpb-belajar-crud-mongodb-lidya102938.xii-rpl-3.repl.co'
 
   useEffect(() => {
@@ -18,19 +20,6 @@ export default function dataSiswa() {
 
   const deleteHandler = (id) => {
     axios.get(`${BASE_URL}/delete-siswa/${id}`).then(res => {
-      axios.get(`${BASE_URL}/`).then(res => {
-        setDatas(res.data)
-      }).catch(error => {
-        console.log(error)
-      })
-    }).catch(error => {
-      console.log(error.message)
-    })
-  }
-
-
-  const updateHandler = (id) => {
-    axios.post(`${BASE_URL}/update-siswa/${id}`).then(res => {
       axios.get(`${BASE_URL}/`).then(res => {
         setDatas(res.data)
       }).catch(error => {
@@ -88,7 +77,7 @@ export default function dataSiswa() {
                     <td class="py-4 px-6 space-x-4">
                       <button onClick={() => deleteHandler(el._id)} className="font-medium text-red-600">  <MdDelete size={20} />
                       </button>
-                      <button onClick={() => updateHandler(el._id)} className="font-medium text-blue-500">  <MdUpdate size={20} />
+                      <button onClick={() => navigate(`/UpdateSiswa/${el._id}`)} className="font-medium text-blue-500">  <MdUpdate size={20} />
                       </button>
                     </td>
 
